@@ -1,6 +1,6 @@
-require './lib/bitfex/version'
-require './lib/bitfex/errors'
-require './lib/bitfex/api'
+require 'bitfex/version'
+require 'bitfex/errors'
+require 'bitfex/api'
 
 module Bitfex
 end
