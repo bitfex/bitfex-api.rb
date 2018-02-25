@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/bitfex.svg)](https://badge.fury.io/rb/bitfex)
+
 # BitFex API for ruby
 
 Simple implementation of BitFex.Trade API for ruby.
@@ -9,7 +11,7 @@ Simple implementation of BitFex.Trade API for ruby.
 ```ruby
 require 'bitfex'
 
-client = Bitfex::Api.new()
+client = Bitfex::Api.new
 # make auth
 client.auth('user@example.com', 'password')
 # call API methods
@@ -18,7 +20,7 @@ client.balances # => {'BTC' => 15.0}
 
 ## Methods
 
-Methods documentation could be found in source =/
+All available methods documentation: http://www.rubydoc.info/gems/bitfex/
 
 # Legal
 
