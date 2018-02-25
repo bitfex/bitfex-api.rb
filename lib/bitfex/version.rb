@@ -1,5 +1,5 @@
 module Bitfex
-  VERSION_INFO = [1, 0, 0].freeze
+  VERSION_INFO = [1, 0, 1].freeze
   VERSION = VERSION_INFO.map(&:to_s).join('.').freeze
 
   def self.version
