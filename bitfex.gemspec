@@ -3,7 +3,7 @@ require './lib/bitfex/version'
 Gem::Specification.new do |s|
   s.name                  = 'bitfex'
   s.version               = Bitfex::VERSION
-  s.date                  = '2018-02-25'
+  s.date                  = '2018-03-09'
   s.description           = 'API wrapper for BitFex.Trade cryptocurrency stock exchange'
   s.summary               = 'API wrapper for BitFex.Trade'
   s.authors               = ['BitFex.Trade']

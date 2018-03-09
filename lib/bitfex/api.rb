@@ -39,8 +39,8 @@ module Bitfex
 
     # Return list of orders for all pairs
     # @return [Array<Hash>] list of orders (id, pair, amount, price, operation, completed, updated)
-    def orders_list
-      response = request_get('/api/v1/orders')
+    def orders_list(pair)
+      response = request_get("/api/v1/orders?pair=#{pair}")
       raise ApiError.new(response['errors'].to_json) unless response['success']
       response['orders']
     end
