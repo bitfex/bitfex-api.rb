@@ -6,7 +6,9 @@ module Bitfex
     attr_accessor :token
 
     # @param server_url [String] URL of the main server
-    def initialize(server_url: 'https://bitfex.trade')
+    # @param auth_server_url [String] URL of the auth server
+    def initialize(token: nil, server_url: 'https://bitfex.trade')
+      @token = token
       @_server_url = server_url
     end
 
@@ -20,20 +22,12 @@ module Bitfex
       @_server_url = url
     end
 
-    # Get token for API operations
-    # @param email [String] email
-    # @param password [String] password
-    def auth(email, password)
-      body = request_post('/auth', auth: { email: email, password: password })
-      return @token = body['jwt'] if body['jwt']
-      raise AuthError.new
-    end
-
     # Return account balances
     # @return [Hash<String, Fixnum>] balances
     def balances
       response = request_get('/api/v1/user')
       raise ApiError.new(response['errors'].to_json) unless response['success']
+
       response['balances']
     end
 
@@ -107,9 +101,10 @@ module Bitfex
 
       request = klass.new(uri.request_uri, 'Content-Type' => 'application/json')
 
-      request.add_field('Authorization', "Bearer #{token}") if token
+      request.add_field('X-API-Key', token) if token
       request.body = JSON.dump(body) if body
       response = http.request(request)
+
       JSON.parse(response.body || '{}')
     end
   end
